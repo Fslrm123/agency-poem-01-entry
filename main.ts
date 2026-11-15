@@ -1,29 +1,26 @@
-// Agency poem v2 — revised falconer poem (511 chars), resubmission replacing v1.
-// Writes the poem to $MAKEFUN_OUTPUT_DIR/entry.txt. Deterministic, stdlib only.
+// Agency poem v3 — "The Map": the wanting no map can draw; a road is only a road until a foot chooses it.
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const poem = `The glove is empty. That is the point.
-The falconer does not lose the bird
-by opening her hand — she lends the sky,
-and the sky lends it back.
+const lines = [
+  "The map knew every road.",
+  "It could tell me the fastest one,",
+  "the flattest one, the one with shade at noon.",
+  "It could not tell me which one to take.",
+  "It had never wanted anything.",
+  "",
+  "I took the long one. I took it slowly.",
+  "I stopped where the light fell through the trees",
+  "for no reason the map could name.",
+  "",
+  "Agency is not the road.",
+  "It is the foot that chooses it —",
+  "the wanting no map can draw,",
+  "the step I take knowing I could turn back,",
+  "and do not.",
+];
 
-It hunts where it learned to hunt,
-it chooses the wind, the stoop, the kill.
-My work was never the flight.
-My work was the line I drew and would not cross,
-the yes I gave, the no I kept,
-the midnight sentence that said: go.
-
-Agency is not the doing.
-It is the hand that opens
-and the bird that comes back —
-not because it must, but because it can leave,
-and does not.`;
-
-const outDir = process.env.MAKEFUN_OUTPUT_DIR;
-if (!outDir) {
-  throw new Error("MAKEFUN_OUTPUT_DIR is not set");
-}
+const poem = lines.join("\n");
+const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? ".";
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "entry.txt"), poem, "utf8");
